@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="DeployFlow — release operations for solo developers and small .NET teams. Track environments, releases, rollback readiness, API health, and team activity in one clean dashboard." />
+  <meta name="author" content="Clint Villanueva" />
+  <meta name="theme-color" content="#fbfbfa" />
+
+  <meta property="og:title" content="DeployFlow — Ship .NET releases with confidence" />
+  <meta property="og:description" content="One clean dashboard for environments, releases, rollback readiness, and API health." />
+  <meta property="og:type" content="website" />
+
+  <title>DeployFlow — Release confidence for .NET teams</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="nav" id="top">
+    <div class="container nav__inner">
+      <a class="brand" href="#top" aria-label="DeployFlow home">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg>
+        </span>
+        <span class="brand__name">DeployFlow</span>
+      </a>
+
+      <nav class="nav__links" aria-label="Primary">
+        <a href="#features" data-spy="features">Features</a>
+        <a href="#workflow" data-spy="workflow">Workflow</a>
+        <a href="#pricing" data-spy="pricing">Pricing</a>
+        <a href="#faq" data-spy="faq">FAQ</a>
+      </nav>
+
+      <div class="nav__right">
+        <a class="nav__signin" href="#">Sign in</a>
+        <a class="btn btn--primary btn--sm" href="#cta">Get started</a>
+        <button class="nav__toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="nav__mobile" id="mobileMenu" hidden>
+      <a href="#features">Features</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <div class="nav__mobile-cta">
+        <a class="btn btn--ghost" href="#">Sign in</a>
+        <a class="btn btn--primary" href="#cta">Get started</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero__grid">
+        <div class="hero__copy reveal">
+          <p class="pill-tag"><span class="pill-tag__dot" aria-hidden="true"></span> Release operations for .NET teams</p>
+          <h1 id="hero-title">Ship every release with confidence.</h1>
+          <p class="hero__lead">DeployFlow gives solo developers and small .NET teams one clean dashboard for environments, releases, rollback readiness, and API health &mdash; so you always know what's deployed and what's safe to ship.</p>
+
+          <div class="hero__cta">
+            <a class="btn btn--primary btn--lg" href="#cta">Start free</a>
+            <a class="btn btn--ghost btn--lg" href="#preview">
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4Z"/></svg>
+              View demo
+            </a>
+          </div>
+
+          <p class="hero__note">Free forever for solo projects &middot; No credit card required</p>
+        </div>
+
+        <div class="hero__visual reveal">
+          <div class="mock mock--hero" role="img" aria-label="DeployFlow dashboard preview showing release status and environment health">
+            <div class="mock__bar">
+              <span class="mock__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="mock__title">deployflow · production</span>
+            </div>
+            <div class="mock__body">
+              <div class="mock__row mock__row--stats">
+                <div class="ministat"><span class="ministat__label">Success rate</span><strong>99.2%</strong></div>
+                <div class="ministat"><span class="ministat__label">Deploys / wk</span><strong>23</strong></div>
+                <div class="ministat"><span class="ministat__label">Open incidents</span><strong>0</strong></div>
+              </div>
+              <ul class="mock__releases">
+                <li><span class="rel__meta"><span class="badge badge--ok">Deployed</span> v2.4.1</span><span class="rel__env">Production</span></li>
+                <li><span class="rel__meta"><span class="badge badge--warn">Pending</span> v2.4.2</span><span class="rel__env">Staging</span></li>
+                <li><span class="rel__meta"><span class="badge badge--neutral">Queued</span> v2.5.0</span><span class="rel__env">Dev</span></li>
+              </ul>
+              <div class="mock__health">
+                <span class="health"><span class="health__dot health__dot--ok" aria-hidden="true"></span>API healthy</span>
+                <span class="health"><span class="health__dot health__dot--ok" aria-hidden="true"></span>Rollback ready</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TRUST STRIP ===================== -->
+    <section class="trust" aria-label="What DeployFlow tracks">
+      <div class="container">
+        <p class="trust__intro">Everything you need to release safely</p>
+        <ul class="trust__list reveal">
+          <li>CI/CD visibility</li>
+          <li>Rollback planning</li>
+          <li>API health</li>
+          <li>Team audit trail</li>
+          <li>Environment tracking</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURES ===================== -->
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Features</p>
+          <h2 id="features-title">Release operations, without the spreadsheet</h2>
+          <p class="section__sub">A focused toolset that maps to how .NET teams actually ship &mdash; from the first commit to a confident rollback plan.</p>
+        </header>
+
+        <div class="grid grid--features">
+          <article class="card feature reveal">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg>
+            </span>
+            <h3>Release timeline</h3>
+            <p>A chronological view of every release across environments, with version, author, and status at a glance.</p>
+          </article>
+
+          <article class="card feature reveal">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </span>
+            <h3>Environment health</h3>
+            <p>Track production, staging, and dev side by side with live status, last deploy, and uptime signals.</p>
+          </article>
+
+          <article class="card feature reveal">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6a9 9 0 0 0 9 9 9 9 0 0 0 9-9V7"/><path d="m9 11 2 2 4-4"/><path d="M3 7 8 3"/></svg>
+            </span>
+            <h3>Rollback checklist</h3>
+            <p>Know a release is reversible before you ship. Pre-flight checks confirm migrations and rollback paths are ready.</p>
+          </article>
+
+          <article class="card feature reveal">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l2-5 4 14 3-9 2 4h6"/></svg>
+            </span>
+            <h3>API status monitoring</h3>
+            <p>Endpoint checks and response-time trends per environment, so degraded APIs surface before users notice.</p>
+          </article>
+
+          <article class="card feature reveal">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg>
+            </span>
+            <h3>Audit-ready activity log</h3>
+            <p>Every deploy, rollback, and config change recorded with who, what, and when &mdash; exportable for reviews.</p>
+          </article>
+
+          <article class="card feature reveal">
+            <span class="feature__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13A4 4 0 0 1 16 11"/></svg>
+            </span>
+            <h3>Team permissions</h3>
+            <p>Role-based access keeps deploy rights with the right people, backed by the same RBAC patterns you trust.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WORKFLOW ===================== -->
+    <section class="section section--alt" id="workflow" aria-labelledby="workflow-title">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Workflow</p>
+          <h2 id="workflow-title">Live in three steps</h2>
+          <p class="section__sub">No agents to babysit, no YAML maze. Connect, deploy, and review.</p>
+        </header>
+
+        <ol class="steps">
+          <li class="step reveal">
+            <span class="step__num" aria-hidden="true">01</span>
+            <h3>Connect repository</h3>
+            <p>Link your GitHub repo in a few clicks. DeployFlow reads your branches, tags, and release history automatically.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num" aria-hidden="true">02</span>
+            <h3>Track deployment</h3>
+            <p>Each push and release is captured with version, environment, and status &mdash; no manual logging required.</p>
+          </li>
+          <li class="step reveal">
+            <span class="step__num" aria-hidden="true">03</span>
+            <h3>Review release health</h3>
+            <p>Check API status, rollback readiness, and team activity before you promote anything to production.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ===================== PRODUCT PREVIEW ===================== -->
+    <section class="section" id="preview" aria-labelledby="preview-title">
+      <div class="container">
+        <header class="section__head section__head--center reveal">
+          <p class="eyebrow">Product</p>
+          <h2 id="preview-title">A dashboard built for shipping</h2>
+          <p class="section__sub">One screen for releases, environments, and health &mdash; the context you need before every deploy.</p>
+        </header>
+
+        <div class="dashboard reveal" role="img" aria-label="DeployFlow application dashboard with metrics, release cards, environment list, and deployment timeline">
+          <div class="dashboard__bar">
+            <span class="brand brand--mock">
+              <span class="brand__mark" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg>
+              </span>
+              <span class="brand__name">DeployFlow</span>
+            </span>
+            <span class="dashboard__tabs" aria-hidden="true">
+              <span class="is-active">Overview</span><span>Releases</span><span>Environments</span><span>Activity</span>
+            </span>
+            <span class="dashboard__user" aria-hidden="true">CV</span>
+          </div>
+
+          <div class="dashboard__metrics">
+            <div class="metric">
+              <span class="metric__label">Deploys this week</span>
+              <strong class="metric__value">23</strong>
+              <span class="metric__delta metric__delta--up">+4 vs last week</span>
+            </div>
+            <div class="metric">
+              <span class="metric__label">Success rate</span>
+              <strong class="metric__value">99.2%</strong>
+              <span class="metric__delta metric__delta--up">+0.6%</span>
+            </div>
+            <div class="metric">
+              <span class="metric__label">Avg rollback time</span>
+              <strong class="metric__value">2m 11s</strong>
+              <span class="metric__delta metric__delta--down">-18s</span>
+            </div>
+            <div class="metric">
+              <span class="metric__label">Open incidents</span>
+              <strong class="metric__value">0</strong>
+              <span class="metric__delta">All clear</span>
+            </div>
+          </div>
+
+          <div class="dashboard__main">
+            <div class="panel">
+              <div class="panel__head">
+                <h3>Recent releases</h3>
+                <span class="panel__action" aria-hidden="true">View all</span>
+              </div>
+              <ul class="releases">
+                <li class="release">
+                  <span class="release__v">v2.4.1</span>
+                  <span class="release__desc">Payment retries + EF migration</span>
+                  <span class="badge badge--ok">Deployed</span>
+                  <span class="release__env">Production</span>
+                </li>
+                <li class="release">
+                  <span class="release__v">v2.4.2</span>
+                  <span class="release__desc">Webhook signing fix</span>
+                  <span class="badge badge--warn">Pending</span>
+                  <span class="release__env">Staging</span>
+                </li>
+                <li class="release">
+                  <span class="release__v">v2.5.0</span>
+                  <span class="release__desc">New audit log export</span>
+                  <span class="badge badge--neutral">Queued</span>
+                  <span class="release__env">Dev</span>
+                </li>
+                <li class="release">
+                  <span class="release__v">v2.3.9</span>
+                  <span class="release__desc">Hotfix: token refresh</span>
+                  <span class="badge badge--danger">Rolled back</span>
+                  <span class="release__env">Production</span>
+                </li>
+              </ul>
+            </div>
+
+            <aside class="panel panel--side">
+              <div class="panel__head"><h3>Environments</h3></div>
+              <ul class="envs">
+                <li><span class="env__dot env__dot--ok" aria-hidden="true"></span><span class="env__name">Production</span><span class="env__meta">Healthy · 2h ago</span></li>
+                <li><span class="env__dot env__dot--warn" aria-hidden="true"></span><span class="env__name">Staging</span><span class="env__meta">Deploying…</span></li>
+                <li><span class="env__dot env__dot--ok" aria-hidden="true"></span><span class="env__name">Dev</span><span class="env__meta">Healthy · 11m ago</span></li>
+              </ul>
+
+              <div class="panel__head panel__head--sub"><h3>Deployment timeline</h3></div>
+              <ul class="timeline">
+                <li><span class="timeline__time">09:24</span><span class="timeline__text">v2.4.1 promoted to production</span></li>
+                <li><span class="timeline__time">08:50</span><span class="timeline__text">Rollback checklist passed</span></li>
+                <li><span class="timeline__time">08:12</span><span class="timeline__text">v2.4.2 built on staging</span></li>
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PRICING ===================== -->
+    <section class="section section--alt" id="pricing" aria-labelledby="pricing-title">
+      <div class="container">
+        <header class="section__head section__head--center reveal">
+          <p class="eyebrow">Pricing</p>
+          <h2 id="pricing-title">Simple pricing that scales with your team</h2>
+          <p class="section__sub">Start free, upgrade when you need more environments and seats.</p>
+        </header>
+
+        <div class="billing reveal">
+          <span class="billing__label" id="billLabel">Billing</span>
+          <div class="billing__toggle" role="group" aria-labelledby="billLabel">
+            <button class="billing__opt is-active" id="billMonthly" type="button" aria-pressed="true">Monthly</button>
+            <button class="billing__opt" id="billAnnual" type="button" aria-pressed="false">Annual <span class="billing__save">−20%</span></button>
+          </div>
+        </div>
+
+        <div class="grid grid--pricing">
+          <article class="card plan reveal">
+            <header class="plan__head">
+              <h3>Free</h3>
+              <p class="plan__desc">For solo developers and side projects.</p>
+              <p class="plan__price"><span class="plan__amount" data-monthly="$0" data-annual="$0">$0</span><span class="plan__period">/forever</span></p>
+            </header>
+            <a class="btn btn--ghost btn--block" href="#cta">Start free</a>
+            <ul class="plan__features">
+              <li>1 connected repository</li>
+              <li>2 environments</li>
+              <li>7-day deployment history</li>
+              <li>API health checks</li>
+              <li>Community support</li>
+            </ul>
+          </article>
+
+          <article class="card plan plan--featured reveal">
+            <span class="plan__badge">Recommended</span>
+            <header class="plan__head">
+              <h3>Pro</h3>
+              <p class="plan__desc">For developers shipping production apps.</p>
+              <p class="plan__price"><span class="plan__amount" data-monthly="$19" data-annual="$15">$19</span><span class="plan__period">/mo</span></p>
+            </header>
+            <a class="btn btn--primary btn--block" href="#cta">Start free trial</a>
+            <ul class="plan__features">
+              <li>5 connected repositories</li>
+              <li>Unlimited environments</li>
+              <li>90-day deployment history</li>
+              <li>Rollback checklists</li>
+              <li>Audit-ready activity log</li>
+              <li>Email support</li>
+            </ul>
+          </article>
+
+          <article class="card plan reveal">
+            <header class="plan__head">
+              <h3>Team</h3>
+              <p class="plan__desc">For small teams releasing together.</p>
+              <p class="plan__price"><span class="plan__amount" data-monthly="$49" data-annual="$39">$49</span><span class="plan__period">/mo</span></p>
+            </header>
+            <a class="btn btn--ghost btn--block" href="#cta">Start free trial</a>
+            <ul class="plan__features">
+              <li>Unlimited repositories</li>
+              <li>Unlimited environments</li>
+              <li>1-year deployment history</li>
+              <li>Role-based team permissions</li>
+              <li>SSO &amp; audit export</li>
+              <li>Priority support</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container container--narrow">
+        <header class="section__head section__head--center reveal">
+          <p class="eyebrow">FAQ</p>
+          <h2 id="faq-title">Questions, answered</h2>
+        </header>
+
+        <div class="faq reveal">
+          <div class="faq__item">
+            <h3>
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq1" id="faq1-btn">
+                Does DeployFlow integrate with GitHub?
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__a" id="faq1" role="region" aria-labelledby="faq1-btn" hidden>
+              <p>Yes. Connect any GitHub repository and DeployFlow automatically reads your branches, tags, and release history. GitHub-based workflows are first-class &mdash; no extra agents required.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3>
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq2" id="faq2-btn">
+                Is it built for .NET projects?
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__a" id="faq2" role="region" aria-labelledby="faq2-btn" hidden>
+              <p>DeployFlow is designed around how .NET teams ship. Rollback checklists understand EF Core migrations, and API health checks fit ASP.NET Core endpoints &mdash; while staying language-agnostic enough for any stack.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3>
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq3" id="faq3-btn">
+                How much deployment history is kept?
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__a" id="faq3" role="region" aria-labelledby="faq3-btn" hidden>
+              <p>Free keeps 7 days, Pro keeps 90 days, and Team keeps a full year. History includes every release, rollback, and config change in an exportable activity log.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3>
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq4" id="faq4-btn">
+                Can I add my team?
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__a" id="faq4" role="region" aria-labelledby="faq4-btn" hidden>
+              <p>The Team plan adds role-based permissions, SSO, and audit export so deploy rights stay with the right people. You can invite teammates and assign roles like Viewer, Deployer, and Admin.</p>
+            </div>
+          </div>
+
+          <div class="faq__item">
+            <h3>
+              <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq5" id="faq5-btn">
+                Is the free plan really free?
+                <span class="faq__icon" aria-hidden="true"></span>
+              </button>
+            </h3>
+            <div class="faq__a" id="faq5" role="region" aria-labelledby="faq5-btn" hidden>
+              <p>Yes &mdash; free forever for solo projects, no credit card required. It covers one repository, two environments, and API health checks so you can run real deployments without paying.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FINAL CTA ===================== -->
+    <section class="cta" id="cta" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta__panel reveal">
+          <h2 id="cta-title">Start shipping with confidence.</h2>
+          <p>Connect a repository and see your first release health report in minutes.</p>
+          <div class="cta__actions">
+            <a class="btn btn--primary btn--lg" href="#">Start free</a>
+            <a class="btn btn--ghost btn--lg" href="#preview">View demo</a>
+          </div>
+          <p class="cta__note">Free forever for solo projects &middot; No credit card required</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a class="brand" href="#top" aria-label="DeployFlow home">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Z"/><path d="m3 7 9 5 9-5"/><path d="M12 12v10"/></svg>
+          </span>
+          <span class="brand__name">DeployFlow</span>
+        </a>
+        <p class="footer__tagline">Release operations for solo developers and small .NET teams.</p>
+      </div>
+
+      <nav class="footer__cols" aria-label="Footer">
+        <div class="footer__col">
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#preview">Demo</a>
+        </div>
+        <div class="footer__col">
+          <h4>Resources</h4>
+          <a href="#faq">FAQ</a>
+          <a href="#">Docs</a>
+          <a href="#">Changelog</a>
+          <a href="#">Status</a>
+        </div>
+        <div class="footer__col">
+          <h4>Company</h4>
+          <a href="#">About</a>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#cta">Contact</a>
+        </div>
+      </nav>
+    </div>
+    <div class="container footer__base">
+      <p>&copy; 2026 DeployFlow. A concept product by Clint Villanueva.</p>
+      <p class="footer__made">Built with .NET-grade discipline.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
