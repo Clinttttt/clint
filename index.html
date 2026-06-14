@@ -32,6 +32,7 @@
       <nav class="nav__links" aria-label="Primary">
         <a href="#about" data-spy="about">About</a>
         <a href="#projects" data-spy="projects">Work</a>
+        <a href="#ventures" data-spy="ventures">Ventures</a>
         <a href="#range" data-spy="range">Skills</a>
         <a href="#certifications" data-spy="certifications">Certificates</a>
         <a href="#contact" data-spy="contact">Contact</a>
@@ -50,6 +51,7 @@
     <div class="nav__mobile" id="mobileMenu" hidden>
       <a href="#about">About</a>
       <a href="#projects">Work</a>
+      <a href="#ventures">Ventures</a>
       <a href="#range">Skills</a>
       <a href="#certifications">Certificates</a>
       <a href="#contact">Contact</a>
@@ -186,11 +188,92 @@
       </div>
     </section>
 
-    <!-- ===================== SKILL MAP ===================== -->
-    <section class="section section--alt" id="range" aria-labelledby="range-title">
+    <!-- ===================== VENTURES ===================== -->
+    <section class="section section--alt" id="ventures" aria-labelledby="ventures-title">
       <div class="container">
         <header class="section__head reveal">
-          <p class="eyebrow">03 / Skills</p>
+          <p class="eyebrow">03 / Ventures</p>
+          <h2 id="ventures-title">Products I've shipped</h2>
+          <p class="section__sub">Beyond coursework and code samples &mdash; real problems turned into deployed products, live and serving real users.</p>
+        </header>
+
+        <div class="ventures">
+
+          <!-- StallTrack -->
+          <article class="venture reveal">
+            <div class="venture__body">
+              <div class="venture__head">
+                <span class="venture__logo">
+                  <img src="assets/images/ventures/stalltrack-logo.png" alt="StallTrack logo" width="46" height="46" loading="lazy" />
+                </span>
+                <div>
+                  <span class="venture__status"><span class="venture__dot" aria-hidden="true"></span> Live &middot; Serving an LGU</span>
+                  <h3>StallTrack</h3>
+                </div>
+              </div>
+              <p class="venture__tagline">GovTech SaaS for public-market &amp; facility collections.</p>
+              <p class="venture__desc">Replaces an LGU revenue office's manual, paper-based collection with a single source of truth &mdash; tracking stalls, payments, and delinquency across 8 facilities, enabling field collection and online payments, and producing reliable month-end reports staff can trust.</p>
+              <ul class="pills pills--tag">
+                <li>ASP.NET Core</li><li>Blazor</li><li>.NET MAUI</li><li>PostgreSQL</li><li>Clean Architecture</li><li>CQRS</li>
+              </ul>
+              <div class="venture__foot">
+                <a class="btn btn--primary" href="https://www.stalltrack.site/" target="_blank" rel="noopener">
+                  Visit StallTrack
+                  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+                </a>
+                <span class="venture__cat">GovTech &middot; LGU SaaS</span>
+              </div>
+            </div>
+            <div class="venture__preview">
+              <a class="browser browser--link browser--cap" href="https://www.stalltrack.site/" target="_blank" rel="noopener" aria-label="Visit StallTrack">
+                <div class="browser__bar"><span></span><span></span><span></span><em>stalltrack.site</em></div>
+                <img class="browser__shot browser__shot--tall" src="assets/images/ventures/stalltrack-web.jpg" alt="StallTrack web dashboard" loading="lazy" />
+              </a>
+            </div>
+          </article>
+
+          <!-- TechCraft Studio -->
+          <article class="venture reveal">
+            <div class="venture__body">
+              <div class="venture__head">
+                <span class="venture__logo">
+                  <img src="assets/images/ventures/techcraft-logo.png" alt="TechCraft Studio logo" width="46" height="46" loading="lazy" />
+                </span>
+                <div>
+                  <span class="venture__status"><span class="venture__dot" aria-hidden="true"></span> Live &middot; Custom software studio</span>
+                  <h3>TechCraft Studio</h3>
+                </div>
+              </div>
+              <p class="venture__tagline">Production-ready software for modern businesses.</p>
+              <p class="venture__desc">A software studio I founded to partner with businesses and bring their ideas to life &mdash; taking each project from first concept to a shipped, dependable product built for real-world, everyday use.</p>
+              <ul class="pills pills--tag">
+                <li>Web Apps</li><li>Desktop</li><li>Mobile</li><li>ASP.NET Core</li><li>React</li><li>.NET MAUI</li>
+              </ul>
+              <div class="venture__foot">
+                <a class="btn btn--primary" href="https://techcraft-studio.vercel.app/" target="_blank" rel="noopener">
+                  Visit TechCraft
+                  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+                </a>
+                <span class="venture__cat">Custom Software &middot; Studio</span>
+              </div>
+            </div>
+            <div class="venture__preview">
+              <a class="browser browser--link" href="https://techcraft-studio.vercel.app/" target="_blank" rel="noopener" aria-label="Visit TechCraft Studio">
+                <div class="browser__bar"><span></span><span></span><span></span><em>techcraft-studio.vercel.app</em></div>
+                <img class="browser__shot browser__shot--wide" src="assets/images/ventures/techcraft-shot.png" alt="TechCraft Studio landing page" loading="lazy" />
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SKILL MAP ===================== -->
+    <section class="section" id="range" aria-labelledby="range-title">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">04 / Skills</p>
           <h2 id="range-title">Tools I use across projects</h2>
         </header>
 
@@ -227,7 +310,7 @@
     <section class="section" id="certifications" aria-labelledby="cert-title">
       <div class="container">
         <header class="section__head reveal">
-          <p class="eyebrow">04 / Credentials</p>
+          <p class="eyebrow">05 / Credentials</p>
           <h2 id="cert-title">Certificates</h2>
           <p class="section__sub">Click any certificate to view full size.</p>
         </header>
@@ -283,7 +366,7 @@
     <section class="section section--alt" id="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="contact reveal">
-          <p class="eyebrow">05 / Contact</p>
+          <p class="eyebrow">06 / Contact</p>
           <h2 id="contact-title">Let&rsquo;s build something</h2>
           <p class="contact__lead">Open to internship, junior developer, freelance, and collaboration.</p>
 
