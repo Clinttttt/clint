@@ -17,7 +17,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="stylesheet" href="spinner-showcase.css?v=11" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -57,6 +58,7 @@
       <a href="#contact">Contact</a>
     </div>
   </header>
+  <div class="nav__backdrop" id="navBackdrop" hidden></div>
 
   <main id="main">
     <!-- ===================== HERO ===================== -->
@@ -258,6 +260,39 @@
             </div>
           </article>
 
+          <!-- Spinner -->
+          <article class="venture reveal">
+            <div class="venture__body">
+              <div class="venture__head">
+                <span class="venture__logo">
+                  <img src="assets/images/ventures/spinner-logo.jpg" alt="Engr. Spin Laundry logo" width="46" height="46" loading="lazy" />
+                </span>
+                <div>
+                  <span class="venture__status"><span class="venture__dot" aria-hidden="true"></span> Shipped &middot; Built for Engr. Spin</span>
+                  <h3>Spinner</h3>
+                </div>
+              </div>
+              <p class="venture__tagline">Laundry operations, organized from booking to delivery.</p>
+              <p class="venture__desc">A mobile-first operations platform built for Engr. Spin Laundromat &mdash; bringing bookings, pickup coordination, order progress, payments, business insights, and transaction history into one focused workflow for owners and staff.</p>
+              <ul class="pills pills--tag">
+                <li>ASP.NET Core</li><li>React Native</li><li>Expo</li><li>Angular</li><li>PostgreSQL</li><li>Vertical Slice</li>
+              </ul>
+              <div class="venture__foot">
+                <button class="btn btn--primary spinner-showcase-open" type="button" aria-haspopup="dialog" aria-controls="spinnerShowcase">
+                  View showcase
+                  <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>
+                </button>
+                <span class="venture__cat">Laundry Ops &middot; Mobile &amp; Web</span>
+              </div>
+            </div>
+            <div class="venture__preview">
+              <button class="browser browser--link browser--button spinner-showcase-open" type="button" aria-label="View the Spinner product showcase" aria-haspopup="dialog" aria-controls="spinnerShowcase">
+                <div class="browser__bar"><span></span><span></span><span></span><em>Spinner &middot; Product showcase</em></div>
+                <img class="browser__shot" src="assets/images/ventures/spinner-mobile.png" alt="Spinner mobile laundry operations app screens" loading="lazy" />
+              </button>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
@@ -406,6 +441,146 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- ===================== SPINNER SHOWCASE ===================== -->
+  <div class="spinner-modal" id="spinnerShowcase" hidden>
+    <div class="spinner-modal__backdrop" data-spinner-close></div>
+    <section class="spinner-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="spinnerShowcaseTitle" aria-describedby="spinnerShowcaseDescription">
+      <header class="spinner-modal__header">
+        <div class="spinner-modal__identity">
+          <img src="assets/images/ventures/spinner-logo.jpg" alt="" width="44" height="44" aria-hidden="true" />
+          <div>
+            <span>Product showcase</span>
+            <strong id="spinnerShowcaseTitle">Spinner</strong>
+          </div>
+        </div>
+
+        <div class="spinner-modal__controls" aria-label="Showcase navigation">
+          <span class="spinner-modal__progress" id="spinnerShowcaseProgress" aria-live="polite">01 / 08</span>
+          <button class="spinner-modal__arrow" id="spinnerShowcasePrevious" type="button" aria-label="Previous screen">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button class="spinner-modal__arrow" id="spinnerShowcaseNext" type="button" aria-label="Next screen">
+            <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+          <button class="spinner-modal__close" id="spinnerShowcaseClose" type="button" aria-label="Close Spinner showcase" data-spinner-close>&times;</button>
+        </div>
+      </header>
+
+      <p class="sr-only" id="spinnerShowcaseDescription">Eight horizontally scrollable Spinner product screens, each with a brief workflow description.</p>
+
+      <div class="spinner-modal__track" id="spinnerShowcaseTrack" tabindex="0" aria-label="Spinner application screens. Scroll horizontally or use the left and right arrow keys.">
+        <article class="spinner-slide" aria-labelledby="spinner-home-title">
+          <div class="spinner-slide__copy">
+            <span class="spinner-slide__number">01 / Daily overview</span>
+            <h2 id="spinner-home-title"><span>Start with</span><span>what matters</span><span>today.</span></h2>
+            <p>The home screen gives owners and staff an immediate view of daily progress, active work, collected revenue, and bookings that need attention.</p>
+            <div class="spinner-slide__summary">
+              <span>Home</span>
+              <strong>Daily operations at a glance</strong>
+            </div>
+          </div>
+          <div class="spinner-slide__visual">
+            <div class="spinner-device"><div class="spinner-device__screen"><img src="assets/images/ventures/spinner/spinner-home.png" alt="Spinner home screen showing daily progress and priority bookings" width="720" height="1600" loading="eager" /></div></div>
+          </div>
+        </article>
+
+        <article class="spinner-slide" aria-labelledby="spinner-bookings-title">
+          <div class="spinner-slide__copy">
+            <span class="spinner-slide__number">02 / Incoming work</span>
+            <h2 id="spinner-bookings-title"><span>Keep every</span><span>booking</span><span>visible.</span></h2>
+            <p>Customer-submitted bookings stay searchable and organized by status, with the service, schedule, payment method, and pickup details available in context.</p>
+            <div class="spinner-slide__summary"><span>Bookings</span><strong>Review and manage incoming requests</strong></div>
+          </div>
+          <div class="spinner-slide__visual">
+            <div class="spinner-device"><div class="spinner-device__screen"><img src="assets/images/ventures/spinner/spinner-bookings.png" alt="Spinner bookings screen showing customer booking cards and status filters" width="720" height="1600" loading="lazy" /></div></div>
+          </div>
+        </article>
+
+        <article class="spinner-slide" aria-labelledby="spinner-orders-title">
+          <div class="spinner-slide__copy">
+            <span class="spinner-slide__number">03 / Walk-in operations</span>
+            <h2 id="spinner-orders-title"><span>Manage</span><span>counter orders</span><span>cleanly.</span></h2>
+            <p>A dedicated workspace keeps walk-in, drop-off, pickup, and owner-created orders separate from new online booking requests while preserving payment and status visibility.</p>
+            <div class="spinner-slide__summary"><span>Orders</span><strong>Owner-created work in one queue</strong></div>
+          </div>
+          <div class="spinner-slide__visual">
+            <div class="spinner-device"><div class="spinner-device__screen"><img src="assets/images/ventures/spinner/spinner-orders.png" alt="Spinner orders screen showing walk-in orders and operational filters" width="720" height="1600" loading="lazy" /></div></div>
+          </div>
+        </article>
+
+        <article class="spinner-slide" aria-labelledby="spinner-pickup-title">
+          <div class="spinner-slide__copy">
+            <span class="spinner-slide__number">04 / Field coordination</span>
+            <h2 id="spinner-pickup-title"><span>Move</span><span>pickup work</span><span>forward.</span></h2>
+            <p>Pickup work is organized by field state, with call, navigation, cancellation, and confirmation actions placed directly beside each customer assignment.</p>
+            <div class="spinner-slide__summary"><span>Pickup</span><strong>Scheduled work and field actions</strong></div>
+          </div>
+          <div class="spinner-slide__visual">
+            <div class="spinner-device"><div class="spinner-device__screen"><img src="assets/images/ventures/spinner/spinner-pickup.png" alt="Spinner pickup screen showing scheduled pickups and field actions" width="720" height="1600" loading="lazy" /></div></div>
+          </div>
+        </article>
+
+        <article class="spinner-slide" aria-labelledby="spinner-location-title">
+          <div class="spinner-slide__copy">
+            <span class="spinner-slide__number">05 / Reliable handoff</span>
+            <h2 id="spinner-location-title"><span>Reach</span><span>confirmed pickup</span><span>locations.</span></h2>
+            <p>The pickup location view combines the confirmed address and coordinates with a clear map, customer contact tools, and direct handoff to navigation.</p>
+            <div class="spinner-slide__summary"><span>Pickup location</span><strong>Address, coordinates, and map context</strong></div>
+          </div>
+          <div class="spinner-slide__visual">
+            <div class="spinner-device"><div class="spinner-device__screen"><img src="assets/images/ventures/spinner/spinner-pickup-location.png" alt="Spinner pickup location screen with confirmed address, map, and navigation actions" width="720" height="1712" loading="lazy" /></div></div>
+          </div>
+        </article>
+
+        <article class="spinner-slide" aria-labelledby="spinner-insights-title">
+          <div class="spinner-slide__copy">
+            <span class="spinner-slide__number">06 / Business visibility</span>
+            <h2 id="spinner-insights-title"><span>See daily</span><span>performance</span><span>clearly.</span></h2>
+            <p>Operational records become a readable view of revenue, bookings, completed orders, and average order value across the selected reporting period.</p>
+            <div class="spinner-slide__summary"><span>Insights</span><strong>Performance metrics for better decisions</strong></div>
+          </div>
+          <div class="spinner-slide__visual">
+            <div class="spinner-device"><div class="spinner-device__screen"><img src="assets/images/ventures/spinner/spinner-insights.png" alt="Spinner insights screen showing revenue and booking performance metrics" width="720" height="1600" loading="lazy" /></div></div>
+          </div>
+        </article>
+
+        <article class="spinner-slide" aria-labelledby="spinner-history-title">
+          <div class="spinner-slide__copy">
+            <span class="spinner-slide__number">07 / Financial record</span>
+            <h2 id="spinner-history-title"><span>Keep every</span><span>transaction</span><span>traceable.</span></h2>
+            <p>Income and deductions remain searchable and easy to review through clear transaction types, linked order references, recorded amounts, and sorting controls.</p>
+            <div class="spinner-slide__summary"><span>Transaction history</span><strong>A dependable record of money in and out</strong></div>
+          </div>
+          <div class="spinner-slide__visual">
+            <div class="spinner-device"><div class="spinner-device__screen"><img src="assets/images/ventures/spinner/spinner-transaction-history.png" alt="Spinner transaction history screen showing recorded booking sales" width="720" height="1600" loading="lazy" /></div></div>
+          </div>
+        </article>
+
+        <article class="spinner-slide" aria-labelledby="spinner-booking-web-title">
+          <div class="spinner-slide__copy">
+            <span class="spinner-slide__number">08 / Customer booking</span>
+            <h2 id="spinner-booking-web-title"><span>Book laundry</span><span>from any</span><span>phone.</span></h2>
+            <p>The customer-facing website turns service selection, pickup details, and booking confirmation into one focused mobile flow—without requiring an account.</p>
+            <div class="spinner-slide__summary"><span>Live booking website</span><strong>Mobile-first self-service booking</strong></div>
+          </div>
+          <div class="spinner-slide__visual spinner-slide__visual--live">
+            <div class="spinner-device spinner-device--live">
+              <div class="spinner-device__screen spinner-device__screen--live">
+                <iframe src="https://spinlaundry.online/" title="Live Engr. Spin customer booking website" loading="lazy" allow="geolocation" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <footer class="spinner-modal__footer">
+        <span><span aria-hidden="true">&harr;</span> Drag, swipe, or use the arrow keys</span>
+        <span>Operations &amp; customer booking</span>
+      </footer>
+    </section>
+  </div>
+
+  <script src="script.js?v=2"></script>
+  <script src="spinner-showcase.js"></script>
 </body>
 </html>

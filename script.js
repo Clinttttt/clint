@@ -16,21 +16,46 @@
   /* ---------- Mobile menu ---------- */
   const toggle = document.getElementById('navToggle');
   const menu = document.getElementById('mobileMenu');
-  function closeMenu() {
+  const menuBackdrop = document.getElementById('navBackdrop');
+  let menuCloseTimer = 0;
+
+  function openMenu() {
+    if (!menu || !toggle || !menuBackdrop) return;
+    window.clearTimeout(menuCloseTimer);
+    menu.hidden = false;
+    menuBackdrop.hidden = false;
+    document.body.classList.add('nav-menu-open');
+    toggle.classList.add('is-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    window.requestAnimationFrame(() => {
+      menu.classList.add('is-open');
+      menuBackdrop.classList.add('is-open');
+      menu.querySelector('a')?.focus({ preventScroll: true });
+    });
+  }
+
+  function closeMenu({ returnFocus = false } = {}) {
     if (!menu || !toggle) return;
+    const wasOpen = toggle.getAttribute('aria-expanded') === 'true';
     menu.classList.remove('is-open');
-    menu.hidden = true;
+    menuBackdrop?.classList.remove('is-open');
+    document.body.classList.remove('nav-menu-open');
     toggle.classList.remove('is-open');
     toggle.setAttribute('aria-expanded', 'false');
+    window.clearTimeout(menuCloseTimer);
+    menuCloseTimer = window.setTimeout(() => {
+      if (!menu.classList.contains('is-open')) menu.hidden = true;
+      if (menuBackdrop && !menuBackdrop.classList.contains('is-open')) menuBackdrop.hidden = true;
+    }, prefersReduced ? 0 : 240);
+    if (returnFocus && wasOpen) toggle.focus({ preventScroll: true });
   }
   if (toggle && menu) {
     toggle.addEventListener('click', () => {
-      const open = menu.classList.toggle('is-open');
-      menu.hidden = !open;
-      toggle.classList.toggle('is-open', open);
-      toggle.setAttribute('aria-expanded', String(open));
+      if (toggle.getAttribute('aria-expanded') === 'true') closeMenu({ returnFocus: true });
+      else openMenu();
     });
     menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', closeMenu));
+    menuBackdrop?.addEventListener('click', () => closeMenu({ returnFocus: true }));
     window.addEventListener('resize', () => { if (window.innerWidth > 720) closeMenu(); });
   }
 
@@ -184,7 +209,7 @@
   /* ---------- Global Escape ---------- */
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      closeMenu();
+      closeMenu({ returnFocus: true });
       if (lightbox && !lightbox.hidden) closeLightbox();
     }
   });
