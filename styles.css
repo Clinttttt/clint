@@ -75,9 +75,7 @@ body.nav-menu-open { overflow:hidden; }
 /* ===================== HERO ===================== */
 .hero { padding:clamp(32px,4.5vw,56px) 0; }
 .hero__grid { display:grid; grid-template-columns:auto 1fr; gap:clamp(28px,5vw,56px); align-items:center; }
-.kicker { display:inline-flex; align-items:center; gap:12px; font-family:var(--mono); font-size:.82rem; font-weight:500; color:var(--accent-ink); margin:0 0 14px; text-transform:uppercase; letter-spacing:.08em; }
-.kicker__line { width:30px; height:1px; background:var(--accent); animation:kickerline 2.6s ease-in-out infinite; transform-origin:left; }
-@keyframes kickerline { 0%,100%{ transform:scaleX(1); opacity:1; } 50%{ transform:scaleX(.4); opacity:.6; } }
+.kicker { display:inline-flex; align-items:center; font-family:var(--mono); font-size:.82rem; font-weight:500; color:var(--accent-ink); margin:0 0 14px; text-transform:uppercase; letter-spacing:.08em; }
 .hero h1 { font-size:clamp(2.6rem,7vw,4.2rem); font-weight:800; margin-bottom:18px; }
 .hero__lead { font-size:clamp(1.02rem,1.9vw,1.2rem); color:var(--slate); margin:0; max-width:50ch; line-height:1.65; }
 
