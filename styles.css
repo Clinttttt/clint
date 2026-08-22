@@ -117,10 +117,6 @@ body.nav-menu-open { overflow:hidden; }
 .about__stats span { font-family:var(--mono); font-size:.74rem; color:var(--muted); }
 
 /* ===================== WORK ===================== */
-.filters { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
-.filter { font-family:var(--mono); font-size:.8rem; font-weight:500; color:var(--slate); background:var(--surface); border:1px solid var(--border); padding:8px 16px; border-radius:999px; cursor:pointer; transition:all .18s ease; }
-.filter:hover { border-color:var(--border-2); }
-.filter.is-active { background:var(--ink); color:#fff; border-color:var(--ink); }
 .projects { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr)); gap:16px; }
 .project { position:relative; isolation:isolate; overflow:hidden; display:flex; flex-direction:column; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:22px; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
 .project::before { content:""; position:absolute; inset:0; z-index:0; background:radial-gradient(220px circle at var(--mx,50%) var(--my,50%), rgba(31,95,255,.09), transparent 60%); opacity:0; transition:opacity .25s ease; pointer-events:none; }

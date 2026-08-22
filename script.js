@@ -83,20 +83,6 @@
     spyTargets.forEach((t) => spy.observe(t));
   }
 
-  /* ---------- Project filters ---------- */
-  const filterBtns = document.querySelectorAll('.filter');
-  const projects = document.querySelectorAll('#projectGrid .project');
-  filterBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const filter = btn.dataset.filter;
-      filterBtns.forEach((b) => b.classList.toggle('is-active', b === btn));
-      projects.forEach((card) => {
-        const tags = (card.dataset.tags || '').split(/\s+/);
-        card.classList.toggle('is-hidden', !(filter === 'all' || tags.includes(filter)));
-      });
-    });
-  });
-
   /* ---------- Copy email ---------- */
   const copyBtn = document.getElementById('copyEmail');
   const copyText = document.getElementById('copyEmailText');
