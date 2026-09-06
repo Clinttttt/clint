@@ -18,7 +18,7 @@
   const portfolioViewCount = document.getElementById('portfolioViewCount');
 
   async function loadPortfolioViews() {
-    if (!portfolioViewCounter || !portfolioViewCount || window.location.hostname !== 'clinttttt.github.io') return;
+    if (!portfolioViewCounter || !portfolioViewCount) return;
 
     const storageKey = 'clint-portfolio-unique-view-counted-v3';
     let hasCounted = false;
