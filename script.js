@@ -20,7 +20,7 @@
   async function loadPortfolioViews() {
     if (!portfolioViewCounter || !portfolioViewCount || window.location.hostname !== 'clinttttt.github.io') return;
 
-    const storageKey = 'clint-portfolio-unique-view-counted-v2';
+    const storageKey = 'clint-portfolio-unique-view-counted-v3';
     let hasCounted = false;
     try { hasCounted = window.localStorage.getItem(storageKey) === '1'; } catch (error) { /* Storage may be unavailable. */ }
 
@@ -40,12 +40,11 @@
       const formattedCount = count.toLocaleString();
       portfolioViewCount.textContent = formattedCount;
       portfolioViewCounter.setAttribute('aria-label', `${formattedCount} unique portfolio views`);
-      portfolioViewCounter.classList.add('is-ready');
       if (!hasCounted) {
         try { window.localStorage.setItem(storageKey, '1'); } catch (error) { /* Unique mode still prevents duplicate display counts. */ }
       }
     } catch (error) {
-      portfolioViewCounter.hidden = true;
+      // Keep the eye and fallback count visible if the counter service is unavailable.
     }
   }
 
