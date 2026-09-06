@@ -13,6 +13,43 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  /* ---------- Anonymous unique portfolio views ---------- */
+  const portfolioViewCounter = document.getElementById('portfolioViewCounter');
+  const portfolioViewCount = document.getElementById('portfolioViewCount');
+
+  async function loadPortfolioViews() {
+    if (!portfolioViewCounter || !portfolioViewCount || window.location.hostname !== 'clinttttt.github.io') return;
+
+    const storageKey = 'clint-portfolio-unique-view-counted';
+    let hasCounted = false;
+    try { hasCounted = window.localStorage.getItem(storageKey) === '1'; } catch (error) { /* Storage may be unavailable. */ }
+
+    const params = new URLSearchParams({ unique: 'true' });
+    if (hasCounted) params.set('readOnly', 'true');
+
+    try {
+      const response = await fetch(`https://counterapi.com/api/clinttttt.github.io/view/portfolio-home?${params}`, {
+        headers: { Accept: 'application/json' },
+        cache: 'no-store'
+      });
+      if (!response.ok) throw new Error('View counter request failed.');
+      const result = await response.json();
+      const count = Number(result.value);
+      if (!Number.isFinite(count)) throw new Error('View counter returned an invalid value.');
+
+      const formattedCount = count.toLocaleString();
+      portfolioViewCount.textContent = formattedCount;
+      portfolioViewCounter.setAttribute('aria-label', `${formattedCount} unique portfolio views`);
+      if (!hasCounted) {
+        try { window.localStorage.setItem(storageKey, '1'); } catch (error) { /* Unique mode still prevents duplicate display counts. */ }
+      }
+    } catch (error) {
+      portfolioViewCounter.hidden = true;
+    }
+  }
+
+  loadPortfolioViews();
+
   /* ---------- Mobile menu ---------- */
   const toggle = document.getElementById('navToggle');
   const menu = document.getElementById('mobileMenu');

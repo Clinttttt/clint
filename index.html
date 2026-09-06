@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=4" />
+  <link rel="stylesheet" href="styles.css?v=5" />
   <link rel="stylesheet" href="spinner-showcase.css?v=14" />
 </head>
 <body>
@@ -42,6 +42,10 @@
       <div class="nav__right">
         <span class="status" title="Open to opportunities">
           <span class="status__dot" aria-hidden="true"></span> Available
+        </span>
+        <span class="view-count" id="portfolioViewCounter" aria-label="Unique portfolio views" title="Unique portfolio views">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2.1 12s3.6-6 9.9-6 9.9 6 9.9 6-3.6 6-9.9 6-9.9-6-9.9-6Z"/><circle cx="12" cy="12" r="2.8"/></svg>
+          <strong id="portfolioViewCount">&mdash;</strong><span>views</span>
         </span>
         <button class="nav__toggle" id="navToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileMenu">
           <span></span><span></span><span></span>
@@ -138,44 +142,44 @@
         <div class="projects" id="projectGrid">
           <article class="project project--feature reveal" data-tags="dotnet">
             <div class="project__heading"><h3>Blog Platform</h3><time class="project__date" datetime="2025-12">Dec 2025</time></div>
-            <p class="project__value">A blog built around CQRS and MediatR, with caching and real-time where they help.</p>
-            <ul class="pills pills--tag"><li>C#</li><li>CQRS</li><li>MediatR</li><li>Caching</li></ul>
+            <p class="project__value">A publishing platform with structured content workflows, real-time updates, and a maintainable CQRS architecture.</p>
+            <ul class="pills pills--tag"><li>Blazor</li><li>MediatR</li><li>SignalR</li><li>PostgreSQL</li></ul>
             <div class="project__actions"><a class="link-arrow" href="https://github.com/Clinttttt/Blog" target="_blank" rel="noopener">View code &rarr;</a></div>
           </article>
 
-          <article class="project project--feature reveal" data-tags="fullstack dotnet">
-            <div class="project__heading"><h3>Calametra Pilipinas</h3><time class="project__date" datetime="2026-09">Sep 2026</time></div>
-            <p class="project__value">An interactive multi-hazard platform for exploring Philippine earthquakes, active faults, and geospatial hazard layers.</p>
-            <ul class="pills pills--tag"><li>ASP.NET Core</li><li>Angular</li><li>PostGIS</li><li>MapLibre</li></ul>
-            <div class="project__actions"><a class="link-arrow" href="https://github.com/Clinttttt/Calametra-Pilipinas" target="_blank" rel="noopener">View code &rarr;</a></div>
+          <article class="project project--feature reveal" data-tags="dotnet">
+            <div class="project__heading"><h3>Usap</h3><time class="project__date" datetime="2026-01">Jan 2026</time></div>
+            <p class="project__value">An anonymous real-time chat app that matches people instantly without requiring accounts.</p>
+            <ul class="pills pills--tag"><li>Blazor</li><li>SignalR</li><li>PostgreSQL</li><li>Tailwind CSS</li></ul>
+            <div class="project__actions"><a class="link-arrow" href="https://github.com/Clinttttt/Usap" target="_blank" rel="noopener">View code &rarr;</a></div>
           </article>
 
           <article class="project reveal" data-tags="dotnet">
             <div class="project__heading"><h3>NEMSU Academic System</h3><time class="project__date" datetime="2025-09">Sep 2025</time></div>
-            <p class="project__value">A .NET Core API with JWT auth and role-based access for academic operations.</p>
-            <ul class="pills pills--tag"><li>ASP.NET Core</li><li>JWT</li><li>RBAC</li><li>SQL Server</li></ul>
+            <p class="project__value">An academic operations platform with secure student and faculty workflows, JWT authentication, and role-based access.</p>
+            <ul class="pills pills--tag"><li>Blazor</li><li>ASP.NET Core</li><li>JWT</li><li>SQL Server</li></ul>
             <div class="project__actions"><a class="link-arrow" href="https://github.com/Clinttttt/System-Integration-Nemsu-Cantilan" target="_blank" rel="noopener">View code &rarr;</a></div>
           </article>
 
           <article class="project reveal" data-tags="fullstack dotnet">
             <div class="project__heading"><h3>Console Ops</h3><time class="project__date" datetime="2026-08">Aug 2026</time></div>
-            <p class="project__value">A deployment command center for monitoring Azure infrastructure, releases, service health, logs, and GitHub automation.</p>
+            <p class="project__value">A deployment command center for Azure infrastructure, releases, service health, logs, and GitHub automation.</p>
             <ul class="pills pills--tag"><li>ASP.NET Core</li><li>Angular</li><li>Azure</li><li>GitHub</li></ul>
             <div class="project__actions"><a class="link-arrow" href="https://github.com/Clinttttt/Console-Ops" target="_blank" rel="noopener">View code &rarr;</a></div>
           </article>
 
           <article class="project reveal" data-tags="fullstack">
             <div class="project__heading"><h3>Nex Apply</h3><time class="project__date" datetime="2026-04">Apr 2026</time></div>
-            <p class="project__value">A job &amp; internship portal &mdash; a full product, beyond the .NET backend.</p>
-            <ul class="pills pills--tag"><li>TypeScript</li><li>Portal</li><li>Full-stack</li></ul>
+            <p class="project__value">A job and internship platform for listings, applications, messaging, interviews, and employer workflows.</p>
+            <ul class="pills pills--tag"><li>React</li><li>TypeScript</li><li>ASP.NET Core</li><li>PostgreSQL</li></ul>
             <div class="project__actions"><a class="link-arrow" href="https://github.com/Clinttttt/Nex-Apply" target="_blank" rel="noopener">View code &rarr;</a></div>
           </article>
 
-          <article class="project reveal" data-tags="dotnet">
-            <div class="project__heading"><h3>Usap</h3><time class="project__date" datetime="2026-01">Jan 2026</time></div>
-            <p class="project__value">Instant anonymous chat with no accounts, using SignalR.</p>
-            <ul class="pills pills--tag"><li>SignalR</li><li>C#</li><li>Tailwind CSS</li></ul>
-            <div class="project__actions"><a class="link-arrow" href="https://github.com/Clinttttt/Usap" target="_blank" rel="noopener">View code &rarr;</a></div>
+          <article class="project reveal" data-tags="fullstack dotnet">
+            <div class="project__heading"><h3>Calametra Pilipinas</h3><time class="project__date" datetime="2026-09">Sep 2026</time></div>
+            <p class="project__value">An interactive multi-hazard platform for exploring Philippine earthquakes, active faults, and geospatial hazard layers.</p>
+            <ul class="pills pills--tag"><li>ASP.NET Core</li><li>Angular</li><li>PostGIS</li><li>MapLibre</li></ul>
+            <div class="project__actions"><a class="link-arrow" href="https://github.com/Clinttttt/Calametra-Pilipinas" target="_blank" rel="noopener">View code &rarr;</a></div>
           </article>
 
           <article class="project reveal" data-tags="dotnet" data-project-page="2" hidden>
@@ -196,7 +200,7 @@
             <div class="project__heading"><h3>Spinner</h3><time class="project__date" datetime="2026-07">Jul 2026</time></div>
             <p class="project__value">An end-to-end laundry platform connecting customer bookings with staff operations, pickups, payments, and reporting.</p>
             <ul class="pills pills--tag"><li>ASP.NET Core</li><li>React Native</li><li>Angular</li><li>PostgreSQL</li></ul>
-            <div class="project__actions"><span class="project__meta">Client project</span></div>
+            <div class="project__actions"><span class="project__meta">Private</span></div>
           </article>
 
           <article class="project reveal" data-tags="fullstack" data-project-page="2" hidden>
@@ -620,7 +624,7 @@
     </section>
   </div>
 
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=4"></script>
   <script src="spinner-showcase.js"></script>
 </body>
 </html>
