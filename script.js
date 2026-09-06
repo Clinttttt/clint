@@ -13,6 +13,85 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  /* ---------- Anonymous unique portfolio views ---------- */
+  const portfolioViewCounter = document.getElementById('portfolioViewCounter');
+  const portfolioViewCount = document.getElementById('portfolioViewCount');
+
+  // Always the same endpoint. Passing unsupported params (a previous version sent
+  // readOnly) makes this service answer from a different bucket, which made the
+  // displayed count drop on repeat visits.
+  const VIEW_ENDPOINT = 'https://counterapi.com/api/clinttttt.github.io/view/portfolio-home?unique=true';
+  const VIEW_CACHE_KEY = 'clint-portfolio-view-count-v4';
+  const VIEW_TIMEOUT_MS = 6000;
+
+  function readCachedViewCount() {
+    try {
+      const cached = Number(window.localStorage.getItem(VIEW_CACHE_KEY));
+      return Number.isFinite(cached) && cached > 0 ? Math.floor(cached) : 0;
+    } catch (error) {
+      return 0; // Storage can be unavailable (private mode, strict cookie policy).
+    }
+  }
+
+  function writeCachedViewCount(count) {
+    try { window.localStorage.setItem(VIEW_CACHE_KEY, String(count)); } catch (error) { /* Non-fatal. */ }
+  }
+
+  function renderViewCount(count) {
+    const formatted = count.toLocaleString();
+    portfolioViewCount.textContent = formatted;
+    portfolioViewCounter.setAttribute('aria-label', `${formatted} unique portfolio ${count === 1 ? 'view' : 'views'}`);
+    portfolioViewCounter.dataset.viewState = 'ready';
+  }
+
+  async function fetchViewCount() {
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), VIEW_TIMEOUT_MS);
+    try {
+      const response = await fetch(VIEW_ENDPOINT, {
+        headers: { Accept: 'application/json' },
+        cache: 'no-store',
+        signal: controller.signal
+      });
+      if (!response.ok) throw new Error(`View counter responded with ${response.status}.`);
+      const result = await response.json();
+      const count = Math.floor(Number(result.value));
+      if (!Number.isFinite(count) || count < 1) throw new Error('View counter returned an invalid value.');
+      return count;
+    } finally {
+      window.clearTimeout(timeout);
+    }
+  }
+
+  async function loadPortfolioViews() {
+    if (!portfolioViewCounter || !portfolioViewCount) return;
+
+    // Paint the last known good value at once so repeat visits never flash.
+    const cached = readCachedViewCount();
+    if (cached > 0) renderViewCount(cached);
+
+    // Keep local development traffic out of the public counter.
+    const isLocal = window.location.protocol === 'file:' ||
+      ['localhost', '127.0.0.1', '::1', ''].includes(window.location.hostname);
+    if (isLocal) {
+      if (cached === 0) portfolioViewCounter.dataset.viewState = 'unavailable';
+      return;
+    }
+
+    try {
+      const fresh = await fetchViewCount();
+      // Views only accumulate, so never render a regression.
+      const next = Math.max(fresh, cached);
+      renderViewCount(next);
+      writeCachedViewCount(next);
+    } catch (error) {
+      // Blocked, offline or timed out: show nothing instead of a misleading 0.
+      if (cached === 0) portfolioViewCounter.dataset.viewState = 'unavailable';
+    }
+  }
+
+  loadPortfolioViews();
+
   /* ---------- Mobile menu ---------- */
   const toggle = document.getElementById('navToggle');
   const menu = document.getElementById('mobileMenu');
