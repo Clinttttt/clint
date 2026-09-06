@@ -155,6 +155,42 @@
   stagger('.gallery');
   stagger('.skillmap');
 
+  /* ---------- Selected builds pagination ---------- */
+  const projectGrid = document.getElementById('projectGrid');
+  const projectCards = projectGrid ? Array.from(projectGrid.querySelectorAll('.project')) : [];
+  const projectPrev = document.getElementById('projectPrev');
+  const projectNext = document.getElementById('projectNext');
+  const projectPageStatus = document.getElementById('projectPageStatus');
+  let projectPage = 1;
+  let projectPageTimer = 0;
+
+  const renderProjectPage = (page) => {
+    projectPage = page;
+    projectCards.forEach((card) => {
+      const cardPage = Number(card.dataset.projectPage || 1);
+      card.hidden = cardPage !== page;
+      if (cardPage === page) card.classList.add('is-visible');
+    });
+    if (projectPageStatus) projectPageStatus.textContent = `0${page} / 02`;
+    if (projectPrev) projectPrev.disabled = page === 1;
+    if (projectNext) projectNext.disabled = page === 2;
+  };
+
+  const changeProjectPage = (page) => {
+    if (!projectGrid || page === projectPage || page < 1 || page > 2) return;
+    window.clearTimeout(projectPageTimer);
+    if (prefersReduced) { renderProjectPage(page); return; }
+    projectGrid.classList.add('is-switching');
+    projectPageTimer = window.setTimeout(() => {
+      renderProjectPage(page);
+      window.requestAnimationFrame(() => projectGrid.classList.remove('is-switching'));
+    }, 160);
+  };
+
+  projectPrev?.addEventListener('click', () => changeProjectPage(projectPage - 1));
+  projectNext?.addEventListener('click', () => changeProjectPage(projectPage + 1));
+  if (projectCards.length) renderProjectPage(1);
+
   /* ---------- Count-up stats (About) ---------- */
   const counters = document.querySelectorAll('[data-count]');
   if (counters.length) {
