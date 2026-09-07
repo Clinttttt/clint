@@ -22,7 +22,33 @@
   // displayed count drop on repeat visits.
   const VIEW_ENDPOINT = 'https://counterapi.com/api/clinttttt.github.io/view/portfolio-home?unique=true';
   const VIEW_CACHE_KEY = 'clint-portfolio-view-count-v4';
+  const VIEW_OWNER_KEY = 'clint-portfolio-owner';
   const VIEW_TIMEOUT_MS = 6000;
+
+  // Owner exclusion. Visit ?owner=1 once per browser to stop your own visits from
+  // inflating the public count; ?owner=0 undoes it. The flag lives in this browser
+  // only, so the counter never sees this device again. IP is deliberately not used
+  // for this: a dynamic residential address rotates and would defeat it.
+  function syncOwnerFlag() {
+    let isOwner = false;
+    try { isOwner = window.localStorage.getItem(VIEW_OWNER_KEY) === '1'; } catch (error) { /* Storage may be blocked. */ }
+
+    const params = new URLSearchParams(window.location.search);
+    const requested = params.get('owner');
+    if (requested !== '1' && requested !== '0') return isOwner;
+
+    isOwner = requested === '1';
+    try {
+      if (isOwner) window.localStorage.setItem(VIEW_OWNER_KEY, '1');
+      else window.localStorage.removeItem(VIEW_OWNER_KEY);
+    } catch (error) { /* Without storage the flag cannot persist. */ }
+
+    // Strip the parameter so a copied link never sets this flag for someone else.
+    params.delete('owner');
+    const query = params.toString();
+    window.history.replaceState({}, '', window.location.pathname + (query ? `?${query}` : '') + window.location.hash);
+    return isOwner;
+  }
 
   function readCachedViewCount() {
     try {
@@ -64,6 +90,7 @@
   }
 
   async function loadPortfolioViews() {
+    const isOwner = syncOwnerFlag();
     if (!portfolioViewCounter || !portfolioViewCount) return;
 
     // Paint the last known good value at once so repeat visits never flash.
@@ -73,7 +100,10 @@
     // Keep local development traffic out of the public counter.
     const isLocal = window.location.protocol === 'file:' ||
       ['localhost', '127.0.0.1', '::1', ''].includes(window.location.hostname);
-    if (isLocal) {
+
+    // Owner and local visits never reach the counter, so they cannot inflate it.
+    // The badge still shows the last value this browser saw, if any.
+    if (isOwner || isLocal) {
       if (cached === 0) portfolioViewCounter.dataset.viewState = 'unavailable';
       return;
     }
